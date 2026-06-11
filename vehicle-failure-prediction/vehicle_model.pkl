@@ -1,0 +1,23 @@
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+# Load dataset
+data = pd.read_csv("vehicle_data.csv")
+
+# Input features
+X = data.drop("failure", axis=1)
+
+# Target column
+y = data["failure"]
+
+# Create model
+model = RandomForestClassifier()
+
+# Train model
+model.fit(X, y)
+
+# Save model as .pkl file
+joblib.dump(model, "vehicle_model.pkl")
+
+print("vehicle_model.pkl file created successfully")
